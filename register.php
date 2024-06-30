@@ -18,7 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $name_error = "Name is required.";
     }
     // Add validations for other fields (lastname, email, birthdate, password, confirm_password)
-
+    if (empty($lastname)) {
+        $lastname_error = "Last Name is required.";
+    }
     // Check if there are no errors, then insert user into database
     if (empty($name_error) && empty($lastname_error) && empty($email_error) && empty($birthdate_error) && empty($password_error) && empty($confirm_password_error)) {
         // Hash the password before inserting into database
@@ -54,8 +56,9 @@ $conn->close();
 </head>
 <body>
     <div class="auth">
-        <div class="header">Register</div>
+        <div class="header"><h1>Registeration</h1></div>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <a href="menu.php" class="back-button">Back to Menu</a>
             <input type="text" name="name" placeholder="Name" value="<?php echo htmlspecialchars($name); ?>">
             <span class="error"><?php echo $name_error; ?></span>
             <input type="text" name="lastname" placeholder="Last Name" value="<?php echo htmlspecialchars($lastname); ?>">

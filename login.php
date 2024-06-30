@@ -53,8 +53,9 @@ $conn->close();
 </head>
 <body>
     <div class="auth">
-        <div class="header">Login</div>
+        <div class="header"><h1>Login</h1></div>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <a href="menu.php" class="back-button">Back to Menu</a>
             <input type="text" name="email" placeholder="Email" value="<?php echo htmlspecialchars($email); ?>">
             <span class="error"><?php echo $email_error; ?></span>
             <input type="password" name="password" placeholder="Password">
