@@ -1,0 +1,204 @@
+/* Reset and global styles */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image:
+        linear-gradient(135deg, hsla(0, 0%, 100%, 0.548) 0%, #808080 100%),
+        url('starryspace.jpg');
+    background-size: cover;
+    backdrop-filter: blur(3px);
+    background-blend-mode: overlay;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0; /* Remove default body margin for full background */
+}
+
+.container {
+    backdrop-filter: blur(10px);
+    background-color: rgba(137, 83, 238, 0.418);
+    width: 80%;
+    height: 60%;
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+h2 {
+    font-size: 28px;
+    font-family: cursive;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 22px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.profile-image {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+form {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+form label {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+form input[type="text"],
+form textarea,
+form input[type="file"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+form input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    border: 2.5px solid black;
+    border-radius: 10px;
+    text-align: center;
+    background-color: rgb(128, 0, 255);
+    color: black;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+form input[type="submit"]:hover {
+    background-color: #ffffff;
+    color: rgb(128, 0, 255);
+    transform: scale(1.1);
+}
+
+.note {
+    width: 1000px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid #ccc;
+    background-color: rgba(127, 122, 167, 0.747);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    text-align: center;
+}
+
+.note h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    margin: 10px 0;
+}
+
+.note p {
+    font-size: 16px;
+    font-style: italic;
+    text-decoration: wavy;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.note img {
+    width: 200px; /* Set a specific width */
+    height: 150px; /* Set a specific height */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.note a {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: rgb(128, 0, 255);
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: background-color 0.2s, transform 0.2s;
+    margin-top: 10px;
+}
+
+.note a:hover {
+    background-color: #ffffff;
+    color: rgb(128, 0, 255);
+    transform: scale(1.1);
+}
+
+.edit_profile {
+    display: inline-block;
+    padding: 12px 24px; /* Adjust padding as needed */
+    background-color: rgb(128, 0, 255);
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 10px;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.edit_profile:hover {
+    background-color: #ffffff;
+    color: rgb(128, 0, 255);
+    transform: scale(1.1);
+}
+
+
+.logout {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+}
+
+.logout a {
+    padding: 10px 20px;
+    background-color: rgb(128, 0, 255);
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 10px;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.logout a:hover {
+    background-color: #ffffff;
+    color: rgb(128, 0, 255);
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .container {
+        height: auto; /* Adjust height to auto for responsive layout */
+    }
+
+    .note {
+        width: 80%; /* Adjust width for better responsiveness */
+    }
+}
