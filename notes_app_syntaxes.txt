@@ -1,0 +1,40 @@
+-- SQL USERS TABLE:
+
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    lastname VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    birthdate DATE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Add column for profile images in the users table
+ALTER TABLE users ADD COLUMN profile_image BLOB;
+
+
+
+-- SQL NOTES TABLE:
+CREATE TABLE notes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+ALTER TABLE notes ADD COLUMN user_id INT NOT NULL;
+ALTER TABLE notes ADD FOREIGN KEY (user_id) REFERENCES users(user_id);
+ALTER TABLE notes ADD COLUMN image_url VARCHAR(255) DEFAULT NULL;
+
+
+CREATE TABLE messages (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    sender_id INT NOT NULL,
+    receiver_id INT NOT NULL,
+    message TEXT NOT NULL,
+    sent_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    status ENUM('unread', 'read') DEFAULT 'unread'
+);
+
+ALTER TABLE messages ADD FOREIGN KEY (sender_id) REFERENCES users(user_id);
+ALTER TABLE messages ADD FOREIGN KEY (receiver_id) REFERENCES users(user_id);
