@@ -55,6 +55,10 @@ $result = $stmt->get_result();
                 <label for="image">Upload Image:</label><br>
                 <input type="file" id="image" name="image"><br><br>
                 <input type="submit" value="Add Note">
+                <a href="friends.php">Friends</a>
+                <a href="messages.php">Message</a>
+                <a href="messages/choose_friend.php">Potential Friends</a>
+                <a href="messages/remove_friend.php">List of Friends to Remove</a>
             </form>
         </div>
 

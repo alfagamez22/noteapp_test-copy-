@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Check file size
-        if ($_FILES["profile_image"]["size"] > 500000) {
+        if ($_FILES["profile_image"]["size"] > 5000000) {
             $profile_image_error = "File is too large.";
             $uploadOk = 0;
         }
@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
-            $profile_image_error = "Sorry, your file was not uploaded.";
+            $profile_image_error = "Error, File was not uploaded due to long name";
         } else {
             // If everything is ok, try to upload file
             if (move_uploaded_file($_FILES["profile_image"]["tmp_name"], $target_file)) {
