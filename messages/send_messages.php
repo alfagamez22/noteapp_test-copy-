@@ -2,26 +2,46 @@
 session_start();
 require_once '../db_config.php';
 
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
+header('Content-Type: application/json');
+
+function sendError($message) {
+    echo json_encode(['success' => false, 'error' => $message]);
     exit;
+}
+
+if (!isset($_SESSION['user_id']) || !isset($_POST['receiver_id']) || !isset($_POST['message'])) {
+    sendError('Invalid request');
 }
 
 $sender_id = $_SESSION['user_id'];
 $receiver_id = $_POST['receiver_id'];
 $message = $_POST['message'];
 
-// Insert message into the database
-$sql_insert = "INSERT INTO messages (sender_id, receiver_id, message) VALUES (?, ?, ?)";
-$stmt_insert = $conn->prepare($sql_insert);
-$stmt_insert->bind_param("iis", $sender_id, $receiver_id, $message);
+$check_friend_sql = "SELECT * FROM friends WHERE (user_id = ? AND friend_id = ?) OR (user_id = ? AND friend_id = ?)";
+$check_friend_stmt = $conn->prepare($check_friend_sql);
+$check_friend_stmt->bind_param("iiii", $sender_id, $receiver_id, $receiver_id, $sender_id);
+$check_friend_stmt->execute();
+$friend_result = $check_friend_stmt->get_result();
 
-if ($stmt_insert->execute()) {
-    echo "Message sent successfully.";
-} else {
-    echo "Error sending message: " . $stmt_insert->error;
+if ($friend_result->num_rows == 0) {
+    sendError('You are not friends with this user');
 }
 
-$stmt_insert->close();
+$sql = "INSERT INTO messages (sender_id, receiver_id, message) VALUES (?, ?, ?)";
+
+try {
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("iis", $sender_id, $receiver_id, $message);
+    
+    if ($stmt->execute()) {
+        echo json_encode(['success' => true]);
+    } else {
+        sendError('Failed to send message');
+    }
+} catch (Exception $e) {
+    sendError('Database error: ' . $e->getMessage());
+}
+
+$stmt->close();
 $conn->close();
 ?>
