@@ -69,5 +69,5 @@ $(document).ready(function() {
         if (currentFriendId) {
             loadMessages(currentFriendId);
         }
-    }, 5000); // Check every 5 seconds
+    }, 1000); // Check every N seconds
 });

@@ -166,8 +166,15 @@ body {
     text-decoration: none;
     font-size: 16px;
     border-radius: 8px;
-    transition: background-color 0.2s, transform 0.2s;
+    transition: background-color 0.3s, transform 0.3s;
     margin-top: 20px;
+}
+
+.back_to_home:hover {
+    background-color: #ffffff;
+    color: rgb(128, 0, 255);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
     
 @media (max-width: 768px) {

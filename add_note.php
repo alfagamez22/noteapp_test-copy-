@@ -10,8 +10,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
     $content = $_POST['content'];
     $user_id = $_SESSION['user_id'];
+
+    // Validate title
+    if (empty($title)) {
+        $_SESSION['error'] = 'Title is required.';
+        header('Location: index.php');
+        exit;
+    } elseif (htmlentities($title) !== $title) {
+        $_SESSION['error'] = 'Invalid characters in title.';
+        header('Location: index.php');
+        exit;
+    }
     
-    // Handle file upload
+    // eto yung nag hahandle ng file upload
     $image_url = null;
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
         $target_dir = "uploads/";
@@ -23,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Insert new note into database
+    // dito nag iinsert ng note and papasok sa db
     $stmt = $conn->prepare("INSERT INTO notes (title, content, user_id, image_url) VALUES (?, ?, ?, ?)");
     if ($stmt) {
         $stmt->bind_param("ssis", $title, $content, $user_id, $image_url);

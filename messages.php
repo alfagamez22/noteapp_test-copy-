@@ -52,7 +52,7 @@ if ($stmt = $conn->prepare($sql)) {
             <form id="message-form">
                 <input type="hidden" id="receiver-id" name="receiver_id" value="">
                 <textarea id="message-input" name="message" placeholder="Type your message..."></textarea>
-                <button type="submit">Send</button>
+                <button type="submit" name="submit-button"><img src="css/send.png" alt="Send" style="width: 20px; height: 20px;"></button>
             </form>
         </div>
     </div>

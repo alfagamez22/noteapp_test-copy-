@@ -8,198 +8,329 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-image:
-        linear-gradient(135deg, hsla(0, 0%, 100%, 0.548) 0%, #808080 100%),
-        url('starryspace.jpg');
+    font-family: 'Arial', sans-serif;
+    background-image: linear-gradient(135deg, hsla(0, 0%, 100%, 0.548) 0%, #808080 100%),
+                      url('starryspace.jpg');
     background-size: cover;
     backdrop-filter: blur(3px);
     background-blend-mode: overlay;
-    height: 100%;
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0; /* Remove default body margin for full background */
+    margin: 0;
+    color: #333;
 }
 
+/* Sidebar styles */
+.side-bar {
+    width: 250px;
+    height: 100vh;
+    background-color: rgba(137, 83, 238, 0.7);
+    padding: 20px;
+    border-radius: 0 20px 20px 0;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    overflow-y: auto;
+}
+
+.side-bar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center contents vertically */
+    height: 100%; /* Ensure the ul takes full height of the sidebar */
+}
+
+.side-bar li {
+    margin-bottom: 15px;
+}
+
+.side-bar a {
+    display: block;
+    padding: 12px 16px;
+    background-color: rgb(128, 0, 255);
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.side-bar a:hover {
+    background-color: #ffffff;
+    color: rgb(128, 0, 255);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Main content container */
 .container {
+    flex: 1;
     backdrop-filter: blur(10px);
-    background-color: rgba(137, 83, 238, 0.418);
-    width: 80%;
-    height: 60%;
+    background-color: rgba(137, 83, 238, 0.5);
+    margin: 20px;
     padding: 30px;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center horizontally */
-    justify-content: center; /* Center vertically */
+    align-items: center;
+    overflow-y: auto;
+    max-height: calc(100vh - 40px);
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
 }
 
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 h2 {
-    font-size: 28px;
-    font-family: cursive;
+    font-size: 32px;
+    font-family: 'Cursive', sans-serif;
     font-weight: bold;
     color: #ffffff;
-    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 h3 {
-    font-size: 22px;
+    font-size: 24px;
     color: #ffffff;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .profile-image {
-    max-width: 200px;
-    max-height: 200px;
-    border-radius: 50%;
+    max-width: 250px;
+    max-height: 250px;
+    border-radius: 10%;
     margin-bottom: 20px;
+    border: 4px solid white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 form {
     width: 100%;
     max-width: 500px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 form label {
     font-size: 18px;
     color: #ffffff;
+    display: block;
+    margin-bottom: 5px;
 }
 
 form input[type="text"],
 form textarea,
 form input[type="file"] {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin: 8px 0;
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 16px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 16px;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form textarea:focus,
+form input[type="file"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgb(128, 0, 255);
 }
 
 form input[type="submit"] {
     width: 100%;
-    padding: 12px;
-    border: 2.5px solid black;
+    padding: 14px;
+    border: none;
     border-radius: 10px;
     text-align: center;
     background-color: rgb(128, 0, 255);
-    color: black;
+    color: white;
     font-size: 18px;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s;
+    transition: all 0.3s ease;
 }
 
 form input[type="submit"]:hover {
     background-color: #ffffff;
     color: rgb(128, 0, 255);
-    transform: scale(1.1);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Note styles */
 .note {
-    width: 1000px;
+    width: 100%;
+    max-width: 800px;
     margin: 20px auto;
-    padding: 15px;
-    border: 1px solid #ccc;
-    background-color: rgba(127, 122, 167, 0.747);
+    padding: 20px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
-    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.note:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .note h3 {
     font-size: 24px;
     font-weight: bold;
-    color: #000000;
-    margin: 10px 0;
+    color: rgb(128, 0, 255);
+    margin: 0 0 15px;
 }
 
 .note p {
     font-size: 16px;
-    font-style: italic;
-    text-decoration: wavy;
-    color: #000000;
-    margin-bottom: 10px;
+    color: #333;
+    margin-bottom: 15px;
+    line-height: 1.6;
 }
 
 .note img {
-    width: 200px; /* Set a specific width */
-    height: 150px; /* Set a specific height */
-    object-fit: cover; /* Maintain aspect ratio and cover the container */
-    border-radius: 10px;
-    margin-bottom: 10px;
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
 }
 
 .note a {
     display: inline-block;
     padding: 8px 16px;
     background-color: rgb(128, 0, 255);
-    color: black;
+    color: white;
     text-decoration: none;
-    font-size: 16px;
-    border-radius: 8px;
-    transition: background-color 0.2s, transform 0.2s;
-    margin-top: 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    margin-right: 10px;
 }
 
 .note a:hover {
     background-color: #ffffff;
     color: rgb(128, 0, 255);
-    transform: scale(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .edit_profile {
     display: inline-block;
-    padding: 12px 24px; /* Adjust padding as needed */
+    padding: 12px 24px;
     background-color: rgb(128, 0, 255);
-    color: black;
+    color: white;
     text-decoration: none;
     font-size: 18px;
+    font-weight: bold;
     border-radius: 10px;
-    transition: background-color 0.2s, transform 0.2s;
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
 }
 
 .edit_profile:hover {
     background-color: #ffffff;
     color: rgb(128, 0, 255);
-    transform: scale(1.1);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-
 .logout {
-    margin-top: 20px;
+    margin-top: 30px;
     text-align: center;
-    font-weight: bold;
-    font-size: 20px;
-    color: black;
 }
 
 .logout a {
-    padding: 10px 20px;
+    padding: 12px 24px;
     background-color: rgb(128, 0, 255);
-    color: black;
+    color: white;
     text-decoration: none;
     font-size: 18px;
+    font-weight: bold;
     border-radius: 10px;
-    transition: background-color 0.2s, transform 0.2s;
+    transition: all 0.3s ease;
 }
 
 .logout a:hover {
     background-color: #ffffff;
     color: rgb(128, 0, 255);
-    transform: scale(1.1);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-@media (max-width: 768px) {
+/* Feedback message styles */
+.feedback {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: rgba(0, 128, 0, 0.1);
+    color: green;
+    border: 1px solid green;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    display: none; /* Initially hidden */
+}
+
+.feedback.error {
+    background-color: rgba(255, 0, 0, 0.1);
+    color: red;
+    border: 1px solid red;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+    body {
+        flex-direction: column;
+    }
+
+    .side-bar {
+        width: 100%;
+        height: auto;
+        border-radius: 0 0 20px 20px;
+    }
+
+    .side-bar ul {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .side-bar li {
+        margin: 5px;
+    }
+
     .container {
-        height: auto; /* Adjust height to auto for responsive layout */
+        margin: 10px;
+        max-height: none;
     }
 
     .note {
-        width: 80%; /* Adjust width for better responsiveness */
+        width: 100%;
     }
 }
 
+@media (max-width: 768px) {
+    .side-bar ul {
+        flex-direction: column;
+    }
+
+    .side-bar a {
+        width: 100%;
+    }
+
+    form {
+        max-width: 100%;
+    }
+
+    .note img {
+        height: auto;
+    }
+}

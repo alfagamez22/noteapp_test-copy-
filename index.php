@@ -32,11 +32,19 @@ $result = $stmt->get_result();
     <link rel="stylesheet" href="css/notes.css">
 </head>
 <body>
+    <div class="side-bar">
+        <ul>
+            <li><a href="friends.php">Friends</a></li>
+            <li><a href="messages.php">Message</a></li>
+            <li><a href="messages/choose_friend.php">Discover Friends</a></li>
+        </ul>
+    </div>
+
     <div class="container">
-        <div class="headers">
+        <header class="header">
             <h2>Simple Note Taking App</h2>
             <h3>Welcome: <?php echo htmlspecialchars($name) . ' ' . htmlspecialchars($lastname); ?></h3>
-        </div>
+        </header>
 
         <div class="profile_image">
             <?php if (!empty($profile_image)) : ?>
@@ -46,27 +54,23 @@ $result = $stmt->get_result();
         
         <a href="edit_profile.php" class="edit_profile">Edit profile</a>
 
-        <div class="adding_notes">
+        <section class="adding_notes">
             <form action="add_note.php" method="post" enctype="multipart/form-data">
                 <label for="title">Title:</label><br>
-                <input type="text" id="title" name="title" required><br><br>
+                <input type="text" id="title" name="title"><br><br>
                 <label for="content">Content:</label><br>
-                <textarea id="content" name="content" rows="4" cols="50" required></textarea><br><br>
+                <textarea id="content" name="content" rows="4" cols="50" ></textarea><br><br>
                 <label for="image">Upload Image:</label><br>
                 <input type="file" id="image" name="image"><br><br>
                 <input type="submit" value="Add Note">
-                <a href="friends.php">Friends</a>
-                <a href="messages.php">Message</a>
-                <a href="messages/choose_friend.php">Potential Friends</a>
-                <a href="messages/remove_friend.php">List of Friends to Remove</a>
             </form>
-        </div>
+        </section>
 
-        <div class="my_notes">
+        <section class="my_notes">
             <h3>My Notes</h3>
             <?php if ($result->num_rows > 0) : ?>
                 <?php while ($row = $result->fetch_assoc()) : ?>
-                    <div class="note">
+                    <article class="note">
                         <h3><?php echo htmlspecialchars($row['title']); ?></h3>
                         <p><?php echo nl2br(htmlspecialchars($row['content'])); ?></p>
                         <?php if (!empty($row['image_url'])) : ?>
@@ -78,12 +82,12 @@ $result = $stmt->get_result();
                         ?>
                         <a href="edit_note.php?id=<?php echo $row['id']; ?>">Edit Note</a> |
                         <a href="delete_note.php?id=<?php echo $row['id']; ?>">Delete Note</a>
-                    </div>
+                    </article>
                 <?php endwhile; ?>
             <?php else : ?>
                 <p>No notes found.</p>
             <?php endif; ?>
-        </div>
+        </section>
 
         <div class="logout">
             <a href="logout.php">Logout</a>

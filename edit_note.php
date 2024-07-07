@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
     $content = $_POST['content'];
     $user_id = $_SESSION['user_id'];
 
-    // Handle file upload
+    // eto ung nag hahandle ng file upload with validation if the file upload ay nagkaroon ng error at hindi nag upload hindi magkakaroon ng catch error
     $image_url = $_POST['current_image'];
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
         $target_dir = "profile_uploads/";
@@ -46,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
         }
     }
 
+    // eto ung nag hahandle ng update ng note
     $stmt = $conn->prepare("UPDATE notes SET title = ?, content = ?, image_url = ? WHERE id = ? AND user_id = ?");
     if ($stmt) {
         $stmt->bind_param("sssii", $title, $content, $image_url, $noteId, $user_id);
@@ -85,7 +86,7 @@ $conn->close();
             <label for="title">Title:</label>
             <input type="text" id="title" name="title" value="<?php echo htmlspecialchars($title); ?>" required><br><br>
             <label for="content">Content:</label>
-            <textarea id="content" name="content" rows="4" cols="50" required><?php echo htmlspecialchars($content); ?></textarea><br><br>
+            <textarea id="content" name="content" rows="4" cols="50"><?php echo htmlspecialchars($content); ?></textarea><br><br>
             <label for="image">Upload New Image:</label><br>
             <input type="file" id="image" name="image"><br><br>
             <input type="submit" value="Save Changes">

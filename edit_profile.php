@@ -23,16 +23,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_birthdate = $_POST['new_birthdate'];
     $profile_image_path = $profile_image; // Default to existing path
 
-    // Handle profile image upload if a new file is provided
+    // dito nag hahandle ng profile image upload if a new img file is provided
     if (!empty($_FILES['new_profile_image']['name'])) {
         $target_directory = "profile_uploads/";
         $target_file = $target_directory . basename($_FILES["new_profile_image"]["name"]);
         if (move_uploaded_file($_FILES["new_profile_image"]["tmp_name"], $target_file)) {
-            $profile_image_path = $target_file; // Update path to new upload
+            $profile_image_path = $target_file; // Update dir
         }
     }
 
-    // Update user's name, lastname, birthdate, and profile image in the database
+    // dito yung update user's name, lastname, birthdate, and profile image in the database
     $stmt_update = $conn->prepare("UPDATE users SET name = ?, lastname = ?, birthdate = ?, profile_image = ? WHERE user_id = ?");
     $stmt_update->bind_param("ssssi", $new_name, $new_lastname, $new_birthdate, $profile_image_path, $user_id);
     $stmt_update->execute();
