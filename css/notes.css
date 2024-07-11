@@ -1,4 +1,4 @@
-/* Reset and global styles */
+
 *,
 *::before,
 *::after {
@@ -20,7 +20,6 @@ body {
     color: #333;
 }
 
-/* Sidebar styles */
 .side-bar {
     width: 250px;
     height: 100vh;
@@ -37,8 +36,8 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center contents vertically */
-    height: 100%; /* Ensure the ul takes full height of the sidebar */
+    justify-content: center;
+    height: 100%;
 }
 
 .side-bar li {
@@ -64,7 +63,7 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Main content container */
+
 .container {
     flex: 1;
     backdrop-filter: blur(10px);
@@ -162,7 +161,7 @@ form input[type="submit"]:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Note styles */
+
 .note {
     width: 100%;
     max-width: 800px;
@@ -264,7 +263,7 @@ form input[type="submit"]:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Feedback message styles */
+
 .feedback {
     width: 100%;
     max-width: 500px;
@@ -276,7 +275,7 @@ form input[type="submit"]:hover {
     border-radius: 8px;
     text-align: center;
     font-size: 16px;
-    display: none; /* Initially hidden */
+    display: none;
 }
 
 .feedback.error {
@@ -285,7 +284,7 @@ form input[type="submit"]:hover {
     border: 1px solid red;
 }
 
-/* Responsive styles */
+
 @media (max-width: 1024px) {
     body {
         flex-direction: column;

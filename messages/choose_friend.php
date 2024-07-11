@@ -2,18 +2,18 @@
 session_start();
 require_once '../db_config.php';
 
-// Check if the user is logged in, if not then redirect them to login page
+
 if (!isset($_SESSION['user_id'])) {
     header('location: login.php');
     exit;
 }
 
-// Process selection
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['friend_id'])) {
     $user_id = $_SESSION['user_id'];
     $friend_id = intval($_POST['friend_id']);
 
-    // Check if a friend request already exists
+    
     $check_sql = "SELECT * FROM friend_requests WHERE sender_id = ? AND receiver_id = ? AND status = 'pending'";
     if ($stmt = $conn->prepare($check_sql)) {
         $stmt->bind_param("ii", $user_id, $friend_id);
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['friend_id'])) {
         exit;
     }
 
-    // Insert friend request
+    
     $insert_sql = "INSERT INTO friend_requests (sender_id, receiver_id) VALUES (?, ?)";
     if ($stmt = $conn->prepare($insert_sql)) {
         $stmt->bind_param("ii", $user_id, $friend_id);
@@ -40,12 +40,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['friend_id'])) {
         echo "Error sending friend request: " . $conn->error;
     }
 
-    // Redirect to friends.php or any other page after sending request
+    
     header('location: ../friends.php');
     exit;
 }
 
-// Fetch potential friends (users who are not yet friends)
+
 $user_id = $_SESSION['user_id'];
 $sql = "SELECT user_id, name, profile_image FROM users WHERE user_id != ? AND user_id NOT IN (SELECT friend_id FROM friends WHERE user_id = ?)";
 if ($stmt = $conn->prepare($sql)) {
@@ -72,9 +72,9 @@ if ($stmt = $conn->prepare($sql)) {
             margin-bottom: 10px;
         }
         .friend-item img {
-            width: 50px; /* Adjust size as needed */
-            height: 50px; /* Adjust size as needed */
-            border-radius: 50%; /* Ensures round images */
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             margin-right: 10px;
         }
     </style>

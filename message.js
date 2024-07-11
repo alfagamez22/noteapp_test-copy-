@@ -4,7 +4,7 @@ $(document).ready(function() {
     const imageInput = document.getElementById('image-input');
     const uploadButton = document.getElementById('upload-button');
 
-    // Create and append the indicator span
+    // This Creates and append the indicator span
     const imageIndicator = document.createElement('span');
     imageIndicator.id = 'image-indicator';
     imageIndicator.style.display = 'none';

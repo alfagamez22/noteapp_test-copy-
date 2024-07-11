@@ -17,7 +17,7 @@ $sender_id = $_SESSION['user_id'];
 $receiver_id = $_POST['receiver_id'];
 $message = $_POST['message'] ?? '';
 
-// Check if they are actually friends
+// This Checks if they are actually friends
 $check_friend_sql = "SELECT * FROM friends WHERE (user_id = ? AND friend_id = ?) OR (user_id = ? AND friend_id = ?)";
 $check_friend_stmt = $conn->prepare($check_friend_sql);
 $check_friend_stmt->bind_param("iiii", $sender_id, $receiver_id, $receiver_id, $sender_id);
@@ -28,7 +28,7 @@ if ($friend_result->num_rows == 0) {
     sendError('You are not friends with this user');
 }
 
-// Handle image upload
+// This will Handle image upload
 $image_url = '';
 if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
     $target_dir = "../uploads/messages/";

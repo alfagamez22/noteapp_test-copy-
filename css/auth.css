@@ -1,4 +1,3 @@
-/* Reset and global styles */
 *,
 *::before,
 *::after {
@@ -19,21 +18,21 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Arial, sans-serif; /* Added a fallback font */
+    font-family: Arial, sans-serif;
 }
 
 .auth {
     backdrop-filter: blur(10px);
     background-color: rgba(137, 83, 238, 0.418);
-    width: 50%; /* Relative width */
-    height: 75%; /* Relative height */
-    padding: 30px; /* Fixed padding */
+    width: 50%;
+    height: 75%;
+    padding: 30px;
     border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3); /* Softer shadow */
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
 }
 
 .auth .header {
@@ -47,15 +46,15 @@ body {
 .auth a {
     display: inline-block;
     margin: 10px 0;
-    padding: 15px 30px; /* Adjusted padding */
+    padding: 15px 30px;
     width: 100%;
     text-align: center;
     background-color: rgb(128, 0, 255);
     color: white;
     text-decoration: none;
-    font-size: 18px; /* Fixed font size */
+    font-size: 18px;
     border-radius: 10px;
-    transition: background-color 0.2s, transform 0.2s; /* Added transition */
+    transition: background-color 0.2s, transform 0.2s;
 }
 
 .auth a:hover {
@@ -68,7 +67,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px; /* Fixed gap */
+    gap: 10px;
     width: 100%;
 }
 
@@ -76,24 +75,24 @@ body {
 .auth input[type="password"],
 .auth input[type="date"] {
     width: 100%;
-    padding: 10px; /* Fixed padding */
+    padding: 10px;
     border: none;
     border-radius: 5px;
-    font-size: 16px; /* Fixed font size */
+    font-size: 16px;
     background-color: rgba(255, 255, 255, 0.7);
 }
 
 .auth input[type="submit"] {
     width: 50%;
-    padding: 12px; /* Adjusted padding */
+    padding: 12px;
     border: 2.5px solid black;
     border-radius: 10px;
     text-align: center;
     background-color: rgb(128, 0, 255);
     color: white;
-    font-size: 18px; /* Fixed font size */
+    font-size: 18px;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s; /* Added transition */
+    transition: background-color 0.2s, transform 0.2s;
 }
 
 .auth input[type="submit"]:hover {
@@ -121,11 +120,11 @@ body {
     background-color: rgb(128, 0, 255);
     color: white;
     text-decoration: none;
-    font-size: 18px; /* Fixed font size */
+    font-size: 18px;
     border-radius: 10px;
     width: 25%;
     text-align: center;
-    transition: background-color 0.2s, transform 0.2s; /* Added transition */
+    transition: background-color 0.2s, transform 0.2s;
 }
 
 .auth a.back-button:hover {

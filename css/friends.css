@@ -1,4 +1,4 @@
-/* Reset and global styles */
+
 *,
 *::before,
 *::after {
@@ -81,8 +81,8 @@ button, .search-btn, .add-btn, .remove-btn, .clear-btn, input[type="submit"], a.
     transition: all 0.3s ease;
     font-size: 14px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    text-decoration: none; /* Added for links styled as buttons */
-    display: inline-block; /* Added for links styled as buttons */
+    text-decoration: none;
+    display: inline-block;
 }
 
 button:hover, .search-btn:hover, .add-btn:hover, .remove-btn:hover, .clear-btn:hover, input[type="submit"]:hover, a.button-link:hover {

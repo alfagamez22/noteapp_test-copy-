@@ -13,12 +13,12 @@ $potential_friends = [];
 $friend_requests = [];
 $search_performed = false;
 
-// Handle adding a friend
+// This Handles adding a friend
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     if ($_POST['action'] === 'add_friend' && isset($_POST['friend_id'])) {
         $friend_id = intval($_POST['friend_id']);
         
-        // Check if a friend request already exists
+        // This will check if a friend request already exists
         $sql_check_request = "SELECT * FROM friend_requests WHERE sender_id = ? AND receiver_id = ?";
         if ($stmt_check = $conn->prepare($sql_check_request)) {
             $stmt_check->bind_param("ii", $user_id, $friend_id);
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     }
 }
 
-// Handle removing a friend
+// This Handles removing a friend
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     if ($_POST['action'] === 'remove_friend' && isset($_POST['friend_id'])) {
         $friend_id = intval($_POST['friend_id']);

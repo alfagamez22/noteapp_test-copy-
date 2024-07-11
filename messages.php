@@ -2,17 +2,14 @@
 session_start();
 require_once 'db_config.php';
 
-// Check if the user is logged in, if not then redirect them to login page
 if (!isset($_SESSION['user_id'])) {
     header('location: login.php');
     exit;
 }
 
-// Initialize variables
 $user_id = $_SESSION["user_id"];
 $friends = [];
 
-// Get user's friends
 $sql = "SELECT u.user_id AS id, u.name AS username
         FROM friends f
         JOIN users u ON f.friend_id = u.user_id 
