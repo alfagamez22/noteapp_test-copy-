@@ -51,7 +51,7 @@ body {
     width: 100%;
     text-align: center;
     background-color: rgb(128, 0, 255);
-    color: black;
+    color: white;
     text-decoration: none;
     font-size: 18px; /* Fixed font size */
     border-radius: 10px;
@@ -90,7 +90,7 @@ body {
     border-radius: 10px;
     text-align: center;
     background-color: rgb(128, 0, 255);
-    color: black;
+    color: white;
     font-size: 18px; /* Fixed font size */
     cursor: pointer;
     transition: background-color 0.2s, transform 0.2s; /* Added transition */
@@ -119,7 +119,7 @@ body {
     display: inline-block;
     padding: 10px 20px;
     background-color: rgb(128, 0, 255);
-    color: black;
+    color: white;
     text-decoration: none;
     font-size: 18px; /* Fixed font size */
     border-radius: 10px;
