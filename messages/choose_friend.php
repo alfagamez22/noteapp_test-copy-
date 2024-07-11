@@ -88,7 +88,7 @@ if ($stmt = $conn->prepare($sql)) {
                     <?php if (!empty($friend['profile_image'])): ?>
                         <img src="../<?php echo $friend['profile_image']; ?>" alt="Profile Image">
                     <?php else: ?>
-                        <img src="../path_to_default_image/default_profile_image.png" alt="Default Profile Image">
+                        <img src="../path_to_default_image/default_profile_image.png" alt="No image">
                     <?php endif; ?>
                     <label>
                         <input type="radio" name="friend_id" value="<?php echo $friend['user_id']; ?>">

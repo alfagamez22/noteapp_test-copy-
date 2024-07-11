@@ -59,6 +59,7 @@ body {
     border-right: 1px solid rgba(204, 204, 204, 0.5);
     overflow-y: auto;
     padding-right: 10px;
+    flex-shrink: 0;
 }
 
 #friends-list ul {
@@ -71,7 +72,7 @@ body {
     cursor: pointer;
     color: #fff;
     font-size: 18px;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, color 0.2s;
     border-radius: 5px;
 }
 
@@ -79,16 +80,26 @@ body {
     background-color: rgba(240, 240, 240, 0.2);
 }
 
+
+#friends-list li.highlight {
+    background-color: rgb(245, 61, 245) !important;
+    color: #ffffff !important;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
 #chat-window {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     margin-left: 20px;
+    overflow: hidden;
+    
 }
 
 #message-list {
     flex-grow: 1;
-    overflow-y: auto;
+    overflow-y: scroll;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -105,6 +116,7 @@ body {
 #message-input {
     flex-grow: 1;
     margin-right: 10px;
+    margin-left: 10px;
     padding: 12px;
     border: none;
     border-radius: 5px;
@@ -130,6 +142,12 @@ body {
     transform: scale(1.05);
 }
 
+.status {
+    display: block;
+    font-size: 0.8em;
+    color: #999;
+}
+
 .message {
     max-width: 70%;
     margin-bottom: 15px;
@@ -151,6 +169,27 @@ body {
     border-bottom-left-radius: 0;
 }
 
+.message-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 10px;
+}
+
+#upload-button {
+    position: relative;
+    display: inline-block;
+}
+#image-indicator {
+    position: absolute;
+    top: 40px;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: red; /* Default color */
+}
+
 .timestamp {
     font-size: 0.8em;
     color: rgba(0, 0, 0, 0.5);
@@ -160,7 +199,7 @@ body {
 
 .back_to_home{
     display: inline-block;
-    padding: 10px 20px; /* Adjust padding as needed */
+    padding: 10px 20px;
     background-color: rgb(128, 0, 255);
     color: black;
     text-decoration: none;
@@ -215,8 +254,4 @@ body {
     }
 }
 
-.status {
-    display: block;
-    font-size: 0.8em;
-    color: #999;
-}
+

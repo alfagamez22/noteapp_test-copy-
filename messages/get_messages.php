@@ -43,18 +43,18 @@ try {
     $messages = [];
     while ($row = $result->fetch_assoc()) {
         $messageClass = ($row['sender_id'] == $user_id) ? 'sent' : 'received';
-        $status = ($row['status'] == 'unread') ? 'sent' : ($row['status'] == 'read' ? 'seen' : $row['status']); // Convert "unread" to "sent" and "read" to "seen"
         $messages[] = [
             'class' => $messageClass,
             'sender' => htmlspecialchars($row['sender_name']),
             'message' => htmlspecialchars($row['message']),
             'timestamp' => date('M j, Y g:i A', strtotime($row['sent_at'])),
-            'status' => htmlspecialchars($status)
+            'status' => htmlspecialchars($row['status']), // Directly use the status from the database
+            'image_url' => htmlspecialchars($row['image_url']) // Include the image URL
         ];
     }
 
     // Update status to 'seen' for all messages received by the logged-in user
-    $update_query = "UPDATE messages SET status = 'seen' WHERE receiver_id = ? AND sender_id = ? AND status = 'unread'";
+    $update_query = "UPDATE messages SET status = 'seen' WHERE receiver_id = ? AND sender_id = ? AND status = 'sent'";
     $update_stmt = $conn->prepare($update_query);
     $update_stmt->bind_param("ii", $user_id, $friend_id);
     $update_stmt->execute();

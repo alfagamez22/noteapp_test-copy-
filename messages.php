@@ -48,8 +48,13 @@ if ($stmt = $conn->prepare($sql)) {
         <div id="chat-window">
             <div id="messages-title">Messages</div>
             <div id="message-list"></div>
-            <form id="message-form">
+            <form id="message-form" enctype="multipart/form-data">
                 <input type="hidden" id="receiver-id" name="receiver_id" value="">
+                <button id="upload-button">
+                    <img src="css/paperclip.png" alt="Paper Clip Icon" id="upload-icon" style="width: 20px; height: 20px;">
+                    <span id="image-indicator" style="display: none; color: green; font-weight: bold; margin-left: 5px;">●</span>
+                </button>
+                <input type="file" id="image-input" name="image" style="display:none;">
                 <textarea id="message-input" name="message" placeholder="Type your message..."></textarea>
                 <button type="submit" name="submit-button"><img src="css/send.png" alt="Send" style="width: 20px; height: 20px;"></button>
             </form>
@@ -58,3 +63,4 @@ if ($stmt = $conn->prepare($sql)) {
     <script src="message.js"></script>
 </body>
 </html>
+
