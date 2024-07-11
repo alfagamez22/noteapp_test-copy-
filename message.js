@@ -16,7 +16,7 @@ $(document).ready(function() {
             return;
         }
         $.ajax({
-            url: 'messages/send_messages.php', // Updated URL
+            url: 'messages/send_messages.php',
             method: 'POST',
             data: $(this).serialize(),
             dataType: 'json',
@@ -38,7 +38,7 @@ $(document).ready(function() {
     // Load messages
     function loadMessages(friendId) {
         $.ajax({
-            url: 'messages/get_messages.php', // Updated URL
+            url: 'messages/get_messages.php',
             method: 'GET',
             data: { friend_id: friendId },
             dataType: 'json',
@@ -49,6 +49,7 @@ $(document).ready(function() {
                         messageHtml += `<div class="message ${msg.class}">
                             <strong>${msg.sender}:</strong> ${msg.message}
                             <span class="timestamp">${msg.timestamp}</span>
+                            <span class="status">${msg.status}</span> <!-- Display status -->
                         </div>`;
                     });
                     $('#message-list').html(messageHtml);
@@ -69,5 +70,5 @@ $(document).ready(function() {
         if (currentFriendId) {
             loadMessages(currentFriendId);
         }
-    }, 1000); // Check every N seconds
+    }, 1000); // Check every 1 second
 });

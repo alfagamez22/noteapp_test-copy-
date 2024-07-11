@@ -214,3 +214,9 @@ body {
         max-width: 85%;
     }
 }
+
+.status {
+    display: block;
+    font-size: 0.8em;
+    color: #999;
+}

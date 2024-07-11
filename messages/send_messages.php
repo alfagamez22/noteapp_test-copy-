@@ -17,6 +17,7 @@ $sender_id = $_SESSION['user_id'];
 $receiver_id = $_POST['receiver_id'];
 $message = $_POST['message'];
 
+// Check if they are actually friends
 $check_friend_sql = "SELECT * FROM friends WHERE (user_id = ? AND friend_id = ?) OR (user_id = ? AND friend_id = ?)";
 $check_friend_stmt = $conn->prepare($check_friend_sql);
 $check_friend_stmt->bind_param("iiii", $sender_id, $receiver_id, $receiver_id, $sender_id);
@@ -27,10 +28,11 @@ if ($friend_result->num_rows == 0) {
     sendError('You are not friends with this user');
 }
 
-$sql = "INSERT INTO messages (sender_id, receiver_id, message) VALUES (?, ?, ?)";
+// Insert new message into the database with status 'unread'
+$query = "INSERT INTO messages (sender_id, receiver_id, message, status) VALUES (?, ?, ?, 'unread')";
 
 try {
-    $stmt = $conn->prepare($sql);
+    $stmt = $conn->prepare($query);
     $stmt->bind_param("iis", $sender_id, $receiver_id, $message);
     
     if ($stmt->execute()) {
